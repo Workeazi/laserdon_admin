@@ -11,7 +11,7 @@ if (!supabaseUrl || !supabaseAnonKey) {
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 // Admin client that bypasses Row Level Security (RLS) for CRUD operations
-export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
+export const supabaseAdmin = supabaseServiceKey ? createClient(supabaseUrl, supabaseServiceKey, {
   global: {
     headers: {
       Authorization: `Bearer ${supabaseServiceKey}`,
@@ -23,4 +23,4 @@ export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
     persistSession: false,
     detectSessionInUrl: false
   }
-});
+}) : null;
