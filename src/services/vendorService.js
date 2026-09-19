@@ -1,4 +1,4 @@
-import { supabase } from '../config/supabaseClient';
+import { supabase, supabaseAdmin } from '../config/supabaseClient';
 import { activityLogService } from './activityLogService';
 
 export const vendorService = {
@@ -80,12 +80,12 @@ export const vendorService = {
       updates.approved_at = new Date().toISOString();
     }
 
-    const { data, error } = await supabase
+    const client = supabaseAdmin || supabase;
+    const { data, error } = await client
       .from('vendors')
       .update(updates)
       .eq('id', id)
-      .select()
-      .single();
+      .select();
 
     console.log('Update Result:', data);
     console.log('Update Error:', error);
@@ -110,12 +110,12 @@ export const vendorService = {
       updated_at: new Date().toISOString() 
     };
 
-    const { data, error } = await supabase
+    const client = supabaseAdmin || supabase;
+    const { data, error } = await client
       .from('vendors')
       .update(updates)
       .eq('id', id)
-      .select()
-      .single();
+      .select();
 
     if (error) throw error;
     

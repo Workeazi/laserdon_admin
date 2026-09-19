@@ -8,7 +8,7 @@ if (!supabaseUrl || !supabaseAnonKey) {
   throw new Error('Missing Supabase environment variables. Check .env');
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+const defaultClient = createClient(supabaseUrl, supabaseAnonKey);
 
 // Admin client that bypasses Row Level Security (RLS) for CRUD operations
 export const supabaseAdmin = supabaseServiceKey ? createClient(supabaseUrl, supabaseServiceKey, {
@@ -24,3 +24,6 @@ export const supabaseAdmin = supabaseServiceKey ? createClient(supabaseUrl, supa
     detectSessionInUrl: false
   }
 }) : null;
+
+// Export supabaseAdmin as the main 'supabase' client to bypass RLS everywhere
+export const supabase = supabaseAdmin || defaultClient;
