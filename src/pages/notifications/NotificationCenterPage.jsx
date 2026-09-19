@@ -145,13 +145,13 @@ const NotificationCenterPage = () => {
  const rejectedVendors = vendors.filter(v => v.status === 'rejected');
 
  const counts = {
- registered: registeredVendors.length,
+ all: vendors.length,
  approved: approvedVendors.length,
  rejected: rejectedVendors.length
  };
 
  const getTabVendors = () => {
- if (tabValue === 0) return registeredVendors;
+ if (tabValue === 0) return vendors;
  if (tabValue === 1) return approvedVendors;
  return rejectedVendors;
  };
@@ -182,7 +182,7 @@ const NotificationCenterPage = () => {
  '& .MuiTab-root': { textTransform: 'none', fontWeight: 600, fontSize: '15px' }
  }}
  >
- <Tab label={`Registered (${counts.registered})`} />
+ <Tab label={`All (${counts.all})`} />
  <Tab label={`Approved (${counts.approved})`} />
  <Tab label={`Rejected (${counts.rejected})`} />
  </Tabs>
