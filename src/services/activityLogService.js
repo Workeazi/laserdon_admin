@@ -1,4 +1,4 @@
-import { supabase } from '../config/supabaseClient';
+import { supabaseAdmin as supabase } from '../config/supabaseClient';
 
 export const activityLogService = {
   async logAction(adminId, action, module, targetId, metadata = null) {

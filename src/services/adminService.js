@@ -1,4 +1,4 @@
-import { supabase } from '../config/supabaseClient';
+import { supabaseAdmin as supabase } from '../config/supabaseClient';
 import bcrypt from 'bcryptjs';
 import { activityLogService } from './activityLogService';
 
@@ -7,7 +7,6 @@ export const adminService = {
     const { data, error } = await supabase
       .from('admins')
       .select('*')
-      .eq('role', 'sub_admin')
       .order('created_at', { ascending: false });
 
     if (error) throw error;

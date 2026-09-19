@@ -1,4 +1,4 @@
-import { supabase } from '../config/supabaseClient';
+import { supabaseAdmin as supabase } from '../config/supabaseClient';
 import bcrypt from 'bcryptjs';
 
 export const authService = {

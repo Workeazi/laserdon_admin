@@ -1,4 +1,4 @@
-import { supabase } from '../config/supabaseClient';
+import { supabaseAdmin as supabase } from '../config/supabaseClient';
 
 export const dashboardService = {
   async getDashboardStats(role = 'master_admin') {

@@ -1,4 +1,4 @@
-import { supabase } from '../config/supabaseClient';
+import { supabaseAdmin as supabase } from '../config/supabaseClient';
 import { activityLogService } from './activityLogService';
 
 export const vendorService = {
