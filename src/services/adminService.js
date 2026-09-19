@@ -1,4 +1,4 @@
-import { supabaseAdmin as supabase } from '../config/supabaseClient';
+import { supabase } from '../config/supabaseClient';
 import bcrypt from 'bcryptjs';
 import { activityLogService } from './activityLogService';
 
